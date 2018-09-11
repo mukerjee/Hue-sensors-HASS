@@ -71,7 +71,7 @@ def parse_sml(response):
 
     elif response['type'] == "ZLLTemperature":
         if response['state']['temperature'] is not None:
-            data = {'temperature': 1.8 * (response['state']['temperature']/100.0) + 32}
+            data = {'temperature': round(1.8 * (response['state']['temperature']/100.0) + 32)}
         else:
             data = {'temperature': 'No temperature data'}
 
