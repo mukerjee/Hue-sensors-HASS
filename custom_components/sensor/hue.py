@@ -71,14 +71,14 @@ def parse_sml(response):
 
     elif response['type'] == "ZLLTemperature":
         if response['state']['temperature'] is not None:
-            data = {'temperature': response['state']['temperature']/100.0}
+            data = {'temperature': 1.8 * (response['state']['temperature']/100.0) + 32}
         else:
             data = {'temperature': 'No temperature data'}
 
     elif response['type'] == "ZLLPresence":
         name_raw = response['name']
         arr = name_raw.split()
-        arr.insert(-1, 'motion')
+        #arr.insert(-1, 'motion')
         name = ' '.join(arr)
         hue_state = response['state']['presence']
         if hue_state is True:
